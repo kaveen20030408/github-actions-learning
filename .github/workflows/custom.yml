@@ -13,17 +13,26 @@ jobs:
       matrix:
         node-version: [16.x, 18.x, 20.x]
 
+      # Task 5: Job level environment variables
+    env:
+      NODE_ENV: test
+      LOG_LEVEL: debug
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
 
-    # Task 7: Setup Node.js based on matrix version
+      # Task 7: Setup Node.js based on matrix version
       - name: Set up Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.matrix.node-version }}
 
+      # Task 5: Print environment variables
+      - name: Print environment
+        run: |
+          echo "Environment: ${{ env.NODE_ENV }}"
+          echo "Log Level: ${{ env.LOG_LEVEL }}"
 
       - name: Install dependencies
         run: npm install
