@@ -18,6 +18,9 @@ jobs:
       - name: Print current time
         run: date
 
+      - name: Access secret
+        run: echo "Secret length: ${#{{ secrets.TEST_SECRET }}}"
+
       - name: Print runner information
         run: |
           echo "Runner OS: ${{ runner.os }}"
