@@ -8,14 +8,22 @@ jobs:
   custom-job:
     runs-on: ubuntu-latest
 
+    # Task 7: Matrix strategy to test on multiple Node versions
+    strategy:
+      matrix:
+        node-version: [16.x, 18.x, 20.x]
+
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Setup Node.js 18
+    # Task 7: Setup Node.js based on matrix version
+      - name: Set up Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v3
         with:
-          node-version: 18
+          node-version: ${{ matrix.matrix.node-version }}
+
 
       - name: Install dependencies
         run: npm install
