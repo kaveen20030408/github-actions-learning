@@ -18,7 +18,7 @@ jobs:
       - name: Print current time
         run: date
 
-      - name: Access secret
+      - name: Access secret            #Here has little bit confuse about name(TEST_SECRET) but i solve 
         env:
           TEST_SECRET: ${{ secrets.TEST_SECRET }}
         run: |
